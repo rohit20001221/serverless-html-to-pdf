@@ -10,7 +10,7 @@ class handler(BaseHTTPRequestHandler):
 
         html = "<h1>hello world</h1>"
         pdf = StringIO()
-        pisa.CreatePDF(StringIO(html), pdf)
+        pisa.CreatePDF(html, pdf)
         data = pdf.getvalue()
         self.wfile.write(data)
 
