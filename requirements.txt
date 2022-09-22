@@ -1,2 +1,1 @@
-pdfkit
-wkhtmltopdf
+xhtml2pdf

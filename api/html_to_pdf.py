@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
-from urllib import parse
-import pdfkit
+from xhtml2pdf import pisa
+from io import StringIO
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -9,8 +9,9 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
 
         html = "<h1>hello world</h1>"
-        pdf = pdfkit.from_string(html, False)
-        data = pdf.to_bytes()
+        pdf = StringIO()
+        pisa.CreatePDF(StringIO(html), pdf)
+        data = pdf.getvalue()
         self.wfile.write(data)
 
         return
