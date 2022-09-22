@@ -1,16 +1,16 @@
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
+import pdfkit
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        s = self.path
-        dic = dict(parse.parse_qsl(parse.urlsplit(s).query))
         self.send_response(200)
-        self.send_header('Content-type','text/plain')
+        self.send_header('Content-type','application/pdf')
         self.end_headers()
-        if "name" in dic:
-            message = "Hello, " + dic["name"] + "!"
-        else:
-            message = "Hello, stranger!"
-        self.wfile.write(message.encode())
+
+        html = "<h1>hello world</h1>"
+        pdf = pdfkit.from_string(html, False)
+        data = pdf.to_bytes()
+        self.wfile.write(data)
+
         return
