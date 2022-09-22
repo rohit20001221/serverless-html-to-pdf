@@ -1,10 +1,10 @@
 from http.server import BaseHTTPRequestHandler
 from xhtml2pdf import pisa
-from io import StringIO, BytesIO
+from io import BytesIO
 
 def getPdf(html):
     pdf = BytesIO()
-    pisa.CreatePDF(StringIO(html), pdf)
+    pisa.CreatePDF(html, pdf)
     data = pdf.getvalue()
 
     return data
@@ -28,6 +28,6 @@ class handler(BaseHTTPRequestHandler):
         self._set_headers()
 
         content_len = int(self.headers.get('content-length', 0))
-        post_body = self.rfile.read(content_len)
+        post_body = self.rfile.read(content_len).decode()
         data = getPdf(post_body)
         self.wfile.write(data)
