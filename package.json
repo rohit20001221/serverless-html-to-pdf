@@ -1,0 +1,24 @@
+{
+  "name": "serverless-html-to-pdf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohit20001221/serverless-html-to-pdf.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohit20001221/serverless-html-to-pdf/issues"
+  },
+  "homepage": "https://github.com/rohit20001221/serverless-html-to-pdf#readme",
+  "dependencies": {
+    "html-pdf": "^3.0.1"
+  }
+}
