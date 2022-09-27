@@ -1,10 +1,15 @@
 import pdf from "html-pdf"
 
-export default async function(req, res) {
-    pdf.create("<h1>Hello World</h1>").toBuffer((err, buffer)=> {
+export default async function (req, res) {
+    pdf.create("<h1>hello world</h1>", {
+        phantomPath: path.resolve(
+            process.cwd(),
+            "node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs"
+        ),
+    }).toBuffer((err, buffer) => {
         console.log(buffer)
         console.log(err)
-        res.setHeader('Content-type','application/pdf')
+        res.setHeader('Content-type', 'application/pdf')
         res.send(buffer)
     })
 }
