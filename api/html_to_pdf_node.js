@@ -1,4 +1,5 @@
 import pdf from "html-pdf"
+import path from "path"
 
 export default async function (req, res) {
     pdf.create("<h1>hello world</h1>", {
